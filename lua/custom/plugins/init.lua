@@ -7,6 +7,20 @@ return {
   -- codeium
   'Exafunction/codeium.vim',
 
+  -- colorize
+  {
+    event = 'VeryLazy',
+    'norcalli/nvim-colorizer.lua',
+    opts = {},
+  },
+
+  -- git blame
+  {
+    'f-person/git-blame.nvim',
+    event = 'VeryLazy',
+    opts = {},
+  },
+
   -- bufferline
   {
     'akinsho/bufferline.nvim',
