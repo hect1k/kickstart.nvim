@@ -122,7 +122,7 @@ return {
   {
     'nvim-java/nvim-java',
     config = function()
-      vim.keymap.set('n', '<leader>jr', ':JavaRunMain<CR>', { desc = 'Run Java Main' })
+      vim.keymap.set('n', '<leader>jr', ':JavaRunnerRunMain<CR>', { desc = 'Run Java Main' })
       vim.keymap.set('n', '<leader>jb', ':JavaBuildWorkspace<CR>', { desc = 'Build Java Workspace' })
       vim.keymap.set('n', '<leader>jc', ':JavaCleanWorkspace<CR>', { desc = 'Clean Java Workspace' })
     end,

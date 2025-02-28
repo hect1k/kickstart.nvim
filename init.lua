@@ -722,8 +722,8 @@ require('lazy').setup({
             require('lspconfig')[server_name].setup(server)
           end,
           jdtls = function()
-            require('java').setup()
-            require('lspconfig').jdtls.setup()
+            require('java').setup {}
+            require('lspconfig').jdtls.setup {}
           end,
         },
       }
