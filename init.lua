@@ -340,7 +340,7 @@ require('lazy').setup({
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>j', group = '[J]ava' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>g', group = '[G]it' },
       },
     },
   },
@@ -358,6 +358,7 @@ require('lazy').setup({
     branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
+      'lewis6991/gitsigns.nvim',
       { -- If encountering errors, see telescope-fzf-native README for installation instructions
         'nvim-telescope/telescope-fzf-native.nvim',
 
@@ -418,6 +419,7 @@ require('lazy').setup({
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require('telescope').load_extension, 'gitsigns')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -431,6 +433,10 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = '[F]ind [R]esume' })
       vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = '[G]it [S]tatus' }) -- View changed files
+      vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = '[G]it [C]ommits' }) -- View commit history
+      vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = '[G]it [B]ranches' }) -- Switch branches
+      vim.keymap.set('n', '<leader>gS', builtin.git_stash, { desc = '[G]it [S]tash' }) -- View stash
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -913,6 +919,7 @@ require('lazy').setup({
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'gruvbox'
+      vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', { link = 'LineNr' })
     end,
   },
 

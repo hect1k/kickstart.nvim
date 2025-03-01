@@ -14,13 +14,6 @@ return {
     opts = {},
   },
 
-  -- git blame
-  {
-    'f-person/git-blame.nvim',
-    event = 'VeryLazy',
-    opts = {},
-  },
-
   -- bufferline
   {
     'akinsho/bufferline.nvim',
