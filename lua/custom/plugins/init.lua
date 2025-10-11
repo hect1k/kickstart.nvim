@@ -150,7 +150,6 @@ return {
   -- uv (python)
   {
     'benomahony/uv.nvim',
-    ft = { python },
     dependencies = {
       'folke/snacks.nvim',
       'nvim-telescope/telescope.nvim',
