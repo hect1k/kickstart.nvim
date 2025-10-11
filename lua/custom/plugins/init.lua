@@ -146,4 +146,17 @@ return {
       vim.keymap.set('n', '<leader>jc', ':JavaCleanWorkspace<CR>', { desc = 'Clean Java Workspace' })
     end,
   },
+
+  -- uv (python)
+  {
+    'benomahony/uv.nvim',
+    ft = { python },
+    dependencies = {
+      'folke/snacks.nvim',
+      'nvim-telescope/telescope.nvim',
+    },
+    opts = {
+      picker_integration = true,
+    },
+  },
 }
