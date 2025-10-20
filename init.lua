@@ -977,16 +977,7 @@ require('lazy').setup({
     opts = {
       ensure_installed = {
         'bash',
-        'c',
-        'diff',
-        'html',
         'lua',
-        'luadoc',
-        'markdown',
-        'markdown_inline',
-        'query',
-        'vim',
-        'vimdoc',
         'html',
         'css',
         'javascript',
