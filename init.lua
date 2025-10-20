@@ -135,6 +135,9 @@ vim.opt.smartcase = true
 -- Keep signcolumn on by default
 vim.opt.signcolumn = 'yes'
 
+-- Borders for floating windows
+vim.opt.winborder = 'rounded'
+
 -- Decrease update time
 vim.opt.updatetime = 250
 
@@ -725,6 +728,16 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'ruff', -- Used to format Python code
+        'pyright',
+        'isort',
+        'html-lsp',
+        'css-lsp',
+        'typescript-language-server',
+        'tailwindcss-language-server',
+        'astro-language-server',
+        'lua-language-server',
+        'gopls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -919,7 +932,9 @@ require('lazy').setup({
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
       ---@diagnostic disable-next-line: missing-fields
-      require('gruvbox').setup()
+      require('gruvbox').setup {
+        transparent_mode = true,
+      }
 
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
