@@ -11,7 +11,11 @@ return {
   {
     event = 'VeryLazy',
     'norcalli/nvim-colorizer.lua',
-    opts = {},
+    config = function()
+      require('colorizer').setup {
+        tailwindcss = { enable = true, css = true },
+      }
+    end,
   },
 
   -- bufferline
@@ -62,7 +66,6 @@ return {
   {
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
-    opts = {},
   },
 
   -- markdown preview
@@ -127,25 +130,25 @@ return {
     end,
   },
 
-  -- flutter
-  {
-    'nvim-flutter/flutter-tools.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'stevearc/dressing.nvim', -- optional for vim.ui.select
-    },
-    opts = {},
-  },
-
-  -- java & spring boot
-  {
-    'nvim-java/nvim-java',
-    config = function()
-      vim.keymap.set('n', '<leader>jr', ':JavaRunnerRunMain<CR>', { desc = 'Run Java Main' })
-      vim.keymap.set('n', '<leader>jb', ':JavaBuildWorkspace<CR>', { desc = 'Build Java Workspace' })
-      vim.keymap.set('n', '<leader>jc', ':JavaCleanWorkspace<CR>', { desc = 'Clean Java Workspace' })
-    end,
-  },
+  -- -- flutter
+  -- {
+  --   'nvim-flutter/flutter-tools.nvim',
+  --   requires = {
+  --     'nvim-lua/plenary.nvim',
+  --     'stevearc/dressing.nvim', -- optional for vim.ui.select
+  --   },
+  --   opts = {},
+  -- },
+  --
+  -- -- java & spring boot
+  -- {
+  --   'nvim-java/nvim-java',
+  --   config = function()
+  --     vim.keymap.set('n', '<leader>jr', ':JavaRunnerRunMain<CR>', { desc = 'Run Java Main' })
+  --     vim.keymap.set('n', '<leader>jb', ':JavaBuildWorkspace<CR>', { desc = 'Build Java Workspace' })
+  --     vim.keymap.set('n', '<leader>jc', ':JavaCleanWorkspace<CR>', { desc = 'Clean Java Workspace' })
+  --   end,
+  -- },
 
   -- uv (python)
   {

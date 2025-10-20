@@ -122,6 +122,9 @@ end)
 -- Enable break indent
 vim.opt.breakindent = true
 
+-- Disable wrapping
+vim.opt.wrap = false
+
 -- Save undo history
 vim.opt.undofile = true
 
@@ -155,7 +158,9 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 15
+-- Minimal number of screen columns to keep left and right of the cursor.
+vim.opt.sidescrolloff = 10
 
 -- tabs & indentation
 vim.opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
@@ -720,7 +725,6 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
-        'jdtls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -736,10 +740,10 @@ require('lazy').setup({
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
           end,
-          jdtls = function()
-            require('java').setup {}
-            require('lspconfig').jdtls.setup {}
-          end,
+          -- jdtls = function()
+          --   require('java').setup {}
+          --   require('lspconfig').jdtls.setup {}
+          -- end,
         },
       }
     end,
@@ -780,10 +784,10 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
+        python = { 'isort', 'black' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
   },
@@ -991,7 +995,6 @@ require('lazy').setup({
         'astro',
         'json',
         'python',
-        'java',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
